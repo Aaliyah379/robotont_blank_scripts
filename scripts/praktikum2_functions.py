@@ -22,6 +22,21 @@ def closing():
 #######################
 # YOUR FUNCTIONS HERE #
 #######################
+def forward (speed, duration):
+    for i in range (0,duration):
+        vel_msg.linear.x= speed
+        vel_msg.linear.y=0
+        vel_msg.angular.z=0
+        velocity_publisher.publish(vel_msg)
+        rospy.sleep(0.1)
+
+def sidestep (speed, duration):
+    for i in range (0,duration):
+        vel_msg.linear.x= 0
+        vel_msg.linear.y= speed
+        vel_msg.angular.z=0
+        velocity_publisher.publish(vel_msg)
+        rospy.sleep(0.1)
 
 
 ###########################
@@ -44,11 +59,8 @@ def move():
         ########################
         # YOUR CODE HERE START #
         ########################
-        vel_msg.linear.x = 0
-        vel_msg.linear.y = 0
-        vel_msg.angular.z = 0
-        velocity_publisher.publish(vel_msg)
-        rospy.sleep(0.1)
+        forward(0.4, 30)
+        sidestep(0.3,30)
         ######################
         # YOUR CODE HERE END #
         ######################
