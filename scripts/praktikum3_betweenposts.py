@@ -47,7 +47,18 @@ def move():
         ########################
         # YOUR CODE HERE START #
         ########################
-
+        if distances.centerMin > 0.6:
+           vel_msg.linear.x= 0.4
+           vel_msg.linear.y = 0
+           vel_msg.angular.z = 0
+        elif distances.leftMin  < distances.rightMin :
+           vel_msg.linear.x =  0
+           vel_msg.linear.y = 0 
+           vel_msg.angular.z =-0.5
+        else:
+           vel_msg.linear.x= 0
+           vel_msg.linear.y= 0
+           vel_msg.angular.z= 0.5
         ######################
         # YOUR CODE HERE END #
         ######################
